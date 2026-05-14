@@ -170,7 +170,6 @@ list_of_words = [
 ]
 separator = "=" * 27
 super_separator = "\n" * 3
-attempts = 10
 
 
 def get_secret_word(lst):
@@ -339,7 +338,8 @@ def set_attempts():
     return attempts
 
 
-def menu(attempts):
+def main():
+    attempts = 10
     starting_attempts = attempts
     while True:
         print_menu()
@@ -361,10 +361,6 @@ def menu(attempts):
         if user_input == 0:
             break
         print(super_separator)
-
-
-def main():
-    menu(attempts)
     print("Good bye!!!")
 
 
