@@ -1,3 +1,5 @@
+# https://github.com/Sanzake/kodcode_git/tree/main/week5/python_basic/hangman_game
+
 import random
 
 list_of_words = [
