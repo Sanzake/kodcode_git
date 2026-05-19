@@ -16,4 +16,4 @@ def add_item(item, bag):
     return bag
 
 
-"every call of function add item to the same bag"
+"every call of function with default bag add item to the same bag"
