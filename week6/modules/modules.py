@@ -11,7 +11,10 @@ def public_names(m):
 
 
 # 9
-def add_item(item, bag):
+def add_item(item, bag=None):
+    if bag is None:
+        bag = []
+
     bag.append(item)
     return bag
 
