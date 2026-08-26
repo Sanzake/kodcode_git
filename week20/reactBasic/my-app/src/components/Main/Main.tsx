@@ -1,15 +1,14 @@
-import React from "react";
 import Button from "../Button/Button";
 import Divider from "../Divider/Divider";
 import Input from "../Input/Input";
 import Item from "../Item/Item";
 import NewsCard from "../NewsCard/NewsCard";
 
-const handleClick = () => {
+const handleClick = (): void => {
 	alert("clicked");
 };
 
-const handleClickOnLi = (id: string) => {
+const handleClickOnLi = (id: string): void => {
     console.log(`choosen ${id}`)
 }
 
