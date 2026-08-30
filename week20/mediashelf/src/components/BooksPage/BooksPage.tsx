@@ -22,7 +22,7 @@ export default function BooksPage() {
 
 	return (
 		<div>
-			<h1 style={{ color: "white" }}>Books page</h1>
+			<h1 style={{ color: "white" }}>Your books</h1>
 			<AddItemForm
 				add={(newBook) => setBooks((prev) => [...prev, newBook as Book])}
 				type="book"

@@ -22,7 +22,7 @@ export default function MoviesPage() {
 
   return (
     <div>
-      <h1 style={{ color: "white" }}>Movie page</h1>
+      <h1 style={{ color: "white" }}>Your movies</h1>
       <AddItemForm add={(newMovie) => setBooks((prev) => [...prev, newMovie as Movie])} type="movie" />
       <ul>
         {movies.map((movie) => (
