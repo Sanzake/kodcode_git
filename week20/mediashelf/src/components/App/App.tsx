@@ -1,13 +1,9 @@
-import { useState } from "react";
-
 import "./App.css";
 import Pages from "../Pages/Pages";
 
 function App() {
 	return (
-		<>
-			<Pages />
-		</>
+		<Pages />
 	);
 }
 

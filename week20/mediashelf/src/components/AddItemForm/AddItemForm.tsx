@@ -1,6 +1,6 @@
 import type React from "react";
-import { useState } from "react";
-import type { Book, Movie} from "../../config/config";
+import { useEffect, useState } from "react";
+import type { Book, Movie } from "../../config/config";
 
 interface AddItemFormProps {
 	add: (item: Book | Movie) => void
@@ -14,14 +14,29 @@ const AddItemForm: React.FC<AddItemFormProps> = (props) => {
         pages: 0
     })
 
-    const [idCounter, setIdCounter] = useState(1)
+    const [idCounter, setIdCounter] = useState(() => {
+        const savedId = localStorage.getItem("savedId")
+
+        if (savedId) {
+            try {
+                return JSON.parse(savedId)
+            } catch(err) {
+                console.error(err)
+            }
+        }
+        return 1
+})
     
 
-    const onChangeField = (event: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({...prev, [event.target.id]: event.target.value}))
+    const onChangeField = (event: React.ChangeEvent<HTMLInputElement>) => 
+        setFormData(
+            (prev) => ({...prev, [event.target.id]: event.target.value})
+        )
 
     const onSubmitForm = (event) => {
-        event.preventDefault();    
+        event.preventDefault();
         setIdCounter(idCounter + 1)
+        
 
         if (props.type === "book") {
             props.add({
@@ -44,6 +59,10 @@ const AddItemForm: React.FC<AddItemFormProps> = (props) => {
         }
         
     }
+    useEffect(() => {
+        localStorage.setItem("savedId", JSON.stringify(idCounter))
+
+    }, [idCounter])
 
     return (
         <div style={{ color: "white" }}>

@@ -1,8 +1,12 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import type { Book } from "../../config/config.js";
 import AddItemForm from "../AddItemForm/AddItemForm.js";
 
-export default function BooksPage() {
+interface BooksPageProps {
+	searchInput: string
+}
+
+export default function BooksPage(props: BooksPageProps) {
 	const [books, setBooks] = useState<Book[]>(() => {
 		const savedBooks = localStorage.getItem("myBooks");
 
@@ -28,7 +32,9 @@ export default function BooksPage() {
 				type="book"
 			/>
 			<ul>
-				{books.map((book) => (
+				{books
+				.filter(book => book.title.startsWith(props.searchInput))
+				.map((book) => (
 					<li key={book.id} style={{ color: "white" }}>
 						{`${book.author} - ${book.title}`}
 					</li>
