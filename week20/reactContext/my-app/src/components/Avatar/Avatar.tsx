@@ -8,8 +8,8 @@ export default function Avatar() {
 		<div>
 			<p>my avatar</p>
 			<p>
-        <button type="button" onClick={() =>  context.setUpdater("dark")}>{context.theme}</button>
-      </p>
+				<button type="button" onClick={() =>  context.toggleTheme()}>{context.theme}</button>
+			</p>
 		</div>
 	);
 }
