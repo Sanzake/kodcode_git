@@ -36,7 +36,8 @@ export default function MoviesPage(props: MoviesPageProps) {
         .filter(movie => movie.title.startsWith(props.searchInput))
         .map((movie) => (
           <li key={movie.id} style={{ color: "white" }}>
-            {`${movie.director} - ${movie.title}`}
+            {`${movie.director} - ${movie.title} - ${movie.durationMinutes} minutes`}
+            {movie.id === localStorage.getItem("latestMovieId") && ` - latest`}
           </li>
         ))}
       </ul>

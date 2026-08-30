@@ -33,7 +33,7 @@ const AddItemForm: React.FC<AddItemFormProps> = (props) => {
             (prev) => ({...prev, [event.target.id]: event.target.value})
         )
 
-    const onSubmitForm = (event) => {
+    const onSubmitForm = (event: React.SubmitEvent) => {
         event.preventDefault();
         setIdCounter(idCounter + 1)
         
@@ -46,6 +46,7 @@ const AddItemForm: React.FC<AddItemFormProps> = (props) => {
                 pages: formData.pages,
                 finished: false
             })
+            localStorage.setItem("latestBookId", idCounter)
         }
 
         if (props.type === "movie"){
@@ -56,6 +57,7 @@ const AddItemForm: React.FC<AddItemFormProps> = (props) => {
                 durationMinutes: formData.pages,
                 finished: false
             })
+            localStorage.setItem("latestMovieId", idCounter)
         }
         
     }

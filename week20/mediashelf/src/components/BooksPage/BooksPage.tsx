@@ -36,7 +36,8 @@ export default function BooksPage(props: BooksPageProps) {
 				.filter(book => book.title.startsWith(props.searchInput))
 				.map((book) => (
 					<li key={book.id} style={{ color: "white" }}>
-						{`${book.author} - ${book.title}`}
+						{`${book.author} - ${book.title} - ${book.pages} pages`}
+						{localStorage.getItem("latestBookId") === book.id && ` - latest`}
 					</li>
 				))}
 			</ul>
