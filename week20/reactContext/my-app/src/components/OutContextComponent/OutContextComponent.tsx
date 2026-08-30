@@ -1,4 +1,4 @@
-import React, { useCallback, useContext } from 'react'
+import {useContext } from 'react'
 import ThemeСontext from '../../context/ThemeContext'
 
 export default function OutContextComponent() {
