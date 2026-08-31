@@ -3,6 +3,7 @@ import AddItemForm from "../../AddItemForm/AddItemForm.js";
 import FinishItem from "../../FinishItem/FinishItem.js";
 import "./MediaPage.css";
 import type { Book, Movie } from "../../../config/config.js";
+import DeleteItem from "../../DeleteItem/DeleteItem.js";
 
 interface MediaPageProps {
 	pageTitle: string;
@@ -32,6 +33,12 @@ export default function MediaPage(props: MediaPageProps) {
 		);
 	};
 
+	const handleDeleteItem = (itemId: string) => {
+		const isConfirmed = window.confirm(`Are u shurely want to delete "${items.find((item) => item.id === itemId)?.title}"`)
+		isConfirmed && setItems((prev) => prev.filter((item) => itemId !== item.id))
+
+	}
+
 	useEffect(() => {
 		localStorage.setItem(props.storageKey, JSON.stringify(items));
 	}, [items, props.storageKey]);
@@ -53,8 +60,8 @@ export default function MediaPage(props: MediaPageProps) {
 						<li key={item.id} style={{ color: "white", display: "flex" }}>
 							{props.renderDetails(item)}
 							{localStorage.getItem(props.latestKey) === item.id && ` - latest`}
-
 							<FinishItem item={item} onToggle={handleToggle} />
+							<DeleteItem itemId={item.id} delete={handleDeleteItem}/>
 						</li>
 					))}
 				</ul>
