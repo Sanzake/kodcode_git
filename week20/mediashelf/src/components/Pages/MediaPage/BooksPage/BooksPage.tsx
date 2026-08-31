@@ -1,5 +1,6 @@
 import { renderDetails } from "../../../../utils/utils";
 import MediaPage from "../MediaPage";
+
 export function BooksPage({ searchInput }: { searchInput: string }) {
 	return (
 		<MediaPage
