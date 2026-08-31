@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import type { Book } from "../../config/config.js";
-import AddItemForm from "../AddItemForm/AddItemForm.js";
+import type { Book } from "../../../config/config.js";
+import AddItemForm from "../../AddItemForm/AddItemForm.js";
 import "./BooksPage.css"
-import FinishItem from "../FinishItem/FinishItem.js";
+import FinishItem from "../../FinishItem/FinishItem.js";
 
 interface BooksPageProps {
 	searchInput: string

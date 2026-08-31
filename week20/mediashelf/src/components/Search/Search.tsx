@@ -1,12 +1,13 @@
-import React from "react";
+import type React from "react";
 
 interface SearchProps {
 	setSearchInput: (param: string) => void;
 }
 export default function Search(props: SearchProps) {
-    const changeSearchInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-        props.setSearchInput(e.target.value)
-    }
+	const changeSearchInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+		props.setSearchInput(e.target.value);
+	};
+	
 	return (
 		<input type="text" placeholder="search" onChange={changeSearchInput} />
 	);

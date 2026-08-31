@@ -1,7 +1,6 @@
-import "./App.css";
 import { useEffect, useState } from "react";
-import Pages from "../Pages/Pages";
 import Loading from "../Loading/Loading";
+import Pages from "../Pages/Pages";
 
 function App() {
 	const [isReadyToLoad, setIsReadyToLoad] = useState(false);
@@ -11,14 +10,10 @@ function App() {
 			setIsReadyToLoad(true);
 		}, 3000);
 
-		return () => clearTimeout(timer)
+		return () => clearTimeout(timer);
 	}, []);
-	
-	return (
-		<>
-		{isReadyToLoad ? <Pages /> : <Loading />}
-		</>
-	);
+
+	return (isReadyToLoad ? <Pages /> : <Loading />)
 }
 
 export default App;

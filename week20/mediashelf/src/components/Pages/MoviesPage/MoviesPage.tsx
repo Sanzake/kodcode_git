@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import type { Movie } from "../../config/config.js";
-import AddItemForm from "../AddItemForm/AddItemForm.js";
+import type { Movie } from "../../../config/config.js"
+import AddItemForm from "../../AddItemForm/AddItemForm.js";
 import "./MoviesPage.css"
 
 interface MoviesPageProps {
