@@ -1,9 +1,9 @@
 import { useState } from "react";
 import BooksPage from "../BooksPage/BooksPage";
 import MoviesPage from "../MoviesPage/MoviesPage";
-import Tabs from "../Tabs/Tabs";
 import "./Pages.css"
 import Search from "../Search/Search";
+import TabsManager from "../TabsManager/TabsManager";
 
 export default function Pages() {
     const [activePage, setActivePage] = useState<string>("Movies")
@@ -19,7 +19,7 @@ export default function Pages() {
 
 	return (
 		<div className="pages">
-			<Tabs selected={activePage} select={changePage}/>
+			<TabsManager selected={activePage} select={changePage}/>
 			<Search setSearchInput={changeSearchInput}/>
 			{activePage === "Movies" && <MoviesPage searchInput={searchInput}/>}
 			{activePage === "Books" && <BooksPage searchInput={searchInput}/>}

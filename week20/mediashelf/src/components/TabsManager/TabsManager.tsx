@@ -1,12 +1,12 @@
-import "./Tabs.css";
+import "./TabsManager.css";
 import clsx from "clsx";
 
-interface TabsProps {
+interface TabsManagerProps {
 	selected: string;
 	select: (param: string) => void;
 }
 
-const Tabs: React.FC<TabsProps> = (props) => {
+const TabsManager: React.FC<TabsManagerProps> = (props) => {
 	return (
 		<div>
 			<button
@@ -27,4 +27,4 @@ const Tabs: React.FC<TabsProps> = (props) => {
 	);
 };
 
-export default Tabs;
+export default TabsManager;

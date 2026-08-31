@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import type { Book } from "../../config/config.js";
 import AddItemForm from "../AddItemForm/AddItemForm.js";
+import "./BooksPage.css"
+import FinishItem from "../FinishItem/FinishItem.js";
 
 interface BooksPageProps {
 	searchInput: string
@@ -20,27 +22,36 @@ export default function BooksPage(props: BooksPageProps) {
 		return [];
 	});
 
+	const filteredBooks = books.filter(book => book.title.startsWith(props.searchInput))
+
 	useEffect(() => {
 		localStorage.setItem("myBooks", JSON.stringify(books));
 	}, [books]);
 
+	const handleToggle = (bookId: string, isFinished: boolean) => {
+		setBooks(prevBooks => prevBooks
+			.map(book => book.id === bookId ? {...book, finished: isFinished} : book))
+	}
+
 	return (
 		<div>
-			<h1 style={{ color: "white" }}>Your books</h1>
+			<h1 className="booksPage">Your books ({books.length})</h1>
 			<AddItemForm
 				add={(newBook) => setBooks((prev) => [...prev, newBook as Book])}
 				type="book"
 			/>
+			{ filteredBooks.length > 0 ?
 			<ul>
-				{books
-				.filter(book => book.title.startsWith(props.searchInput))
+				{filteredBooks
 				.map((book) => (
-					<li key={book.id} style={{ color: "white" }}>
+					<li key={book.id} style={{ color: "white", display: "flex" }}>
 						{`${book.author} - ${book.title} - ${book.pages} pages`}
 						{localStorage.getItem("latestBookId") === book.id && ` - latest`}
+
+						<FinishItem item={book} onToggle={handleToggle}/>
 					</li>
 				))}
-			</ul>
+			</ul> : <p style={{color:"white"}}>There is no books!</p>}
 		</div>
 	);
 }
