@@ -1,6 +1,6 @@
 import { useState } from "react";
-import BooksPage from "./BooksPage/BooksPage";
-import MoviesPage from "./MoviesPage/MoviesPage";
+import {BooksPage} from "./MediaPage/BooksPage/BooksPage"
+import {MoviesPage} from "./MediaPage/MoviesPage/MoviesPage";
 import "./Pages.css";
 import Search from "../Search/Search";
 import TabsManager from "../TabsManager/TabsManager";
