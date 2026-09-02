@@ -1,0 +1,12 @@
+.navbar {
+    display: flex;
+    background-color:brown;
+    margin-right: auto;
+}
+
+.link {
+    background-color: darkcyan;
+    padding: 10px;
+    border: 2px solid black;
+    margin: 5px;
+}
