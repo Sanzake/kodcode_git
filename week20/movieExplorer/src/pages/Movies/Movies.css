@@ -1,0 +1,11 @@
+.movieList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+}
+
+.pageTitle {
+    margin-top: 70px;
+    text-align: center;
+}

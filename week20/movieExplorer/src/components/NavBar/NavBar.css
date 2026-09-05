@@ -1,7 +1,15 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
 .navbar {
     display: flex;
     background-color:brown;
-    margin-right: auto;
+    position: fixed;
+    width: 100%;
+    gap: 10px;
+    top: 0;
 }
 
 .link {

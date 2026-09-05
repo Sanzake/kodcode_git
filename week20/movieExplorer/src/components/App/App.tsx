@@ -2,8 +2,8 @@ import { Route, Routes } from "react-router";
 import "./App.css";
 import Favorites from "../../pages/Favorites";
 import Home from "../../pages/Home";
-import MovieDetails from "../../pages/MovieDetails";
-import Movies from "../../pages/Movies";
+import MovieDetails from "../../pages/MovieDetails/MovieDetails";
+import Movies from "../../pages/Movies/Movies";
 import Layout from "../Layout/Layout";
 
 function App() {
@@ -15,6 +15,7 @@ function App() {
 					<Route path="/movies" element={<Movies />} />
 					<Route path="/movies/:id" element={<MovieDetails />} />
 					<Route path="/favorites" element={<Favorites />} />
+					<Route path="*" element={<>404 Not Found!!!</>} />
 				</Route>
 			</Routes>
 		</div>

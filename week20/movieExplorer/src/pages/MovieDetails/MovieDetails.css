@@ -1,0 +1,17 @@
+.pageTitle {
+    margin-top: 70px;
+    text-align: center;
+}
+.currentMovie {
+    background-image: linear-gradient(
+      rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)
+    ),
+}
+
+.movieDetailPoster {
+    height: 660px;
+    width: 440px;
+    margin-top: 100px;
+    margin-left: 50px;
+}
+

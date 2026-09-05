@@ -1,0 +1,23 @@
+.movieCard {
+    align-items: center;
+    flex: 0 0 auto;
+    width: 147px;
+    height: 450px;
+    border: solid;
+    display: flex;
+    flex-direction: column;
+}
+
+.poster {
+    height: 220px;
+    width: 147px;
+}
+
+.cardString {
+    margin-top: auto;
+}
+
+.cardTitle {
+    padding: 10px;
+    text-align: center;
+}
