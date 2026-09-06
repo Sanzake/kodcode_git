@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Link } from "react-router";
 import ProductCard from "../components/ProductCard/ProductCard";
 import SearchBar from "../components/SearchBar/SearchBar";
 import useFetch from "../hooks/useFetch";
@@ -20,12 +19,16 @@ export default function HomePage() {
 	return (
 		<div className="homePage">
 			<h1 className="title">Products</h1>
+
 			<SearchBar setSearchWord={setSearchWord}/>
-			{filteredProducts?.map((p: Product) => (
-				<Link key={p.id} to={`/products/${p.id}`}>
+			
+			{filteredProducts.map((p: Product) => (
+				<div key={p.id}>
 					<ProductCard product={p} />
-				</Link>
+				</div>
 			))}
+			
+			{filteredProducts.length === 0 && <p>No results</p>}
 		</div>
 	);
 }

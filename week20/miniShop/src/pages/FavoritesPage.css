@@ -1,0 +1,11 @@
+.favoritesPage {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    justify-content: center;
+}
+
+.title {
+    text-align: center;
+    width: 100%;
+}
