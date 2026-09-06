@@ -1,14 +1,23 @@
+import { favoriteStore } from "../../store/favoriteStore";
 import "./NavBar.css"
-import { Link } from "react-router";
+import { NavLink } from "react-router";
 
-export default function () {
+export default function NavBar() {
+  const products = favoriteStore((s) => s.favorites)
   return (
     <div className="bar">
-        <Link className="link" to={"/"}>mini shop</Link>
-        <div className="menuRight">
-          <Link className="link" to={"/"}>Products</Link>
-          <Link className="link" to={"/favorites"}>Favorites</Link>
-        </div>
+      <h3 className="shopTitle">Mini shop</h3>
+
+      <div className="menuRight">
+        <NavLink to={"/"} className={({isActive}) => (isActive ? "link active" : "link")}>
+          Products
+        </NavLink>
+        
+        <NavLink to={"/favorites"} className={({isActive}) => (isActive ? "link active" : "link")}>
+          Favorites ({products.length})
+        </NavLink>
+
+      </div>
     </div>
   )
 }

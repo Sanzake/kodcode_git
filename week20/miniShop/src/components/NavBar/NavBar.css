@@ -5,23 +5,38 @@ body {
 
 .bar {
     display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+    align-items: center;
     background-color: burlywood;
-    width: 100%;
-    margin-bottom: 10px;
     position: fixed;
     top: 0;
+    width: 100%;
+    color: brown;
 }
 
 .menuRight {
     display: flex;
     gap: 20px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .link {
-    background-color: darkcyan;
     padding: 10px;
-    border: 2px solid black;
+    outline: 2px solid brown;
     margin: 5px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: brown;
+}
+
+.active {
+    outline: 4px solid brown;
+    font-weight: 800;
+}
+
+.shopTitle {
+    padding: 10px;
+    margin: 5px;
+    flex: 1;
 }
