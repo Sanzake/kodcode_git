@@ -1,0 +1,14 @@
+.title {
+    text-align: center;
+    width: 100%;
+}
+
+.detailedCard {
+    display: flex;
+    border: solid;
+    border-radius: 20px;
+}
+
+.info {
+    flex-direction: column;
+}

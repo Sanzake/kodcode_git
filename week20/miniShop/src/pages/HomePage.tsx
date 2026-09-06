@@ -1,12 +1,15 @@
 import { useState } from "react";
 import ProductCard from "../components/ProductCard/ProductCard";
 import SearchBar from "../components/SearchBar/SearchBar";
-import useFetch from "../hooks/useFetch";
 import type { Product } from "../types/product";
 import "./HomePage.css";
+import useFetchProducts from "../hooks/useFetchProducts";
+
+const PRODUCTS_URL = "https://fakestoreapi.com/products/"
 
 export default function HomePage() {
-	const products: Product[] = useFetch("https://fakestoreapi.com/products");
+	const products: Product[] = useFetchProducts(PRODUCTS_URL);
+	localStorage.setItem("products", JSON.stringify(products))
 
 	const [searchWord, setSearchWord] = useState("");
 
@@ -27,7 +30,7 @@ export default function HomePage() {
 					<ProductCard product={p} />
 				</div>
 			))}
-			
+
 			{filteredProducts.length === 0 && <p>No results</p>}
 		</div>
 	);

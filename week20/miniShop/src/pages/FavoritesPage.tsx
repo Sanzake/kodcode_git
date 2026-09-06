@@ -13,7 +13,9 @@ export default function FavoritesPage() {
                 <div key={p.id}>
                     <ProductCard product={p} />
                 </div>
+                
             ))}
+            {products.length === 0 && <p>No favorites yet!</p>}
         </div>
   )
 }
