@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import useFetch from "../../hooks/useFetch";
+import useFetch, { type Movie } from "../../hooks/useFetch";
 import MovieCard from "./MovieCard/MovieCard";
 import "./Movies.css";
 
@@ -15,7 +15,7 @@ export default function Movies() {
 		<div>
 			<h1 className="pageTitle">Movies</h1>
 			<div className="movieList">
-				{movies?.map((m) => (
+				{movies?.map((m: Movie) => (
 					<Link key={m.id} to={`/movies/${m.id}`}>
 						<MovieCard movie={m} />
 					</Link>
