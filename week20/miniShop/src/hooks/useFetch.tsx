@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
-export default function useFetch(url: string) {
-    const [data, setData] = useState([])
+export default function useFetch<T>(url: string) {
+    const [data, setData] = useState<T>()
 
     useEffect(() => {
         fetch(url)
@@ -13,7 +13,6 @@ export default function useFetch(url: string) {
         })
         .then(result => {
             setData(result)
-            localStorage.setItem("products", JSON.stringify(result))
         })
         .catch(error => {
             console.error("Error!!!", error)
