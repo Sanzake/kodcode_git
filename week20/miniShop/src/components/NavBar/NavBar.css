@@ -1,0 +1,27 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.bar {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    background-color: burlywood;
+    width: 100%;
+    margin-bottom: 10px;
+    position: fixed;
+    top: 0;
+}
+
+.menuRight {
+    display: flex;
+    gap: 20px;
+}
+
+.link {
+    background-color: darkcyan;
+    padding: 10px;
+    border: 2px solid black;
+    margin: 5px;
+}
