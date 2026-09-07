@@ -1,13 +1,27 @@
 .light {
     background-color: wheat;
     color: brown;
+    padding: 50px;
 }
 
 .dark {
     background-color: #362E29;
     color: #fdd0a3;
+    padding: 50px;
 }
 
 a {
     color: inherit;
+}
+
+.layout {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding: 0;
+}
+
+.main-content {
+    padding: 50px;
+    flex: 1;
 }

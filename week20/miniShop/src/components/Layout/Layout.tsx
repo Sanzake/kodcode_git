@@ -7,13 +7,11 @@ import "./Layout.css"
 
 export default function Layout() {
 	const contextThemeValue = useContext(ThemeСontext);
+	const themeClass = contextThemeValue.theme === "light" ? "light" : "dark"
 	return (
-		<div>
+		<div className={`layout ${themeClass}`}>
 			<Header />
-			<div
-				style={{ padding: 50 }}
-				className={contextThemeValue.theme === "light" ? "light" : "dark"}
-			>
+			<div className="main-content">
 				<Outlet />
 			</div>
 			<Footer />
