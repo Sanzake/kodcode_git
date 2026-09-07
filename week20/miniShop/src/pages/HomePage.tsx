@@ -14,7 +14,7 @@ export default function HomePage() {
 	const [searchWord, setSearchWord] = useState("");
 
 	const filteredProducts = products.filter((product: Product) => 
-		product.title.toLowerCase().startsWith(searchWord.toLowerCase())
+		product.title.toLowerCase().includes(searchWord.toLowerCase())
 	)
 
 	console.log(products);
