@@ -1,9 +1,13 @@
+import { useContext} from "react";
 import { favoriteStore } from "../../store/favoriteStore";
 import "./NavBar.css"
 import { NavLink } from "react-router";
+import ThemeСontext from "../../context/themeContext";
 
 export default function NavBar() {
+  const themeContextValue = useContext(ThemeСontext);
   const products = favoriteStore((s) => s.favorites)
+
   return (
     <div className="bar">
       <h3 className="shopTitle">Mini shop</h3>
@@ -18,6 +22,7 @@ export default function NavBar() {
         </NavLink>
 
       </div>
+      <button type="button" className="themeButton" onClick={themeContextValue.toggleTheme}>{themeContextValue.theme === "light" ? "🌝" : "🌚"}</button>
     </div>
   )
 }

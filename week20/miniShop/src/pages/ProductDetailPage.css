@@ -1,14 +1,12 @@
 .title {
     text-align: center;
     width: 100%;
-    color: brown;
 }
 
 .detailedCard {
     display: flex;
-    border: solid brown;
+    border: solid;
     border-radius: 20px;
-    color: brown;
     align-items: center;
 }
 

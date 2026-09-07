@@ -40,3 +40,12 @@ body {
     margin: 5px;
     flex: 1;
 }
+
+.themeButton {
+    margin-right: 20px;
+    background-color: transparent;
+    border: 2px solid brown;
+    border-radius: 10px;
+    font-size: 25px;
+    cursor: pointer;
+}

@@ -2,7 +2,7 @@
     width: 300px;
     height: 300px;
     text-align: center;
-    border: solid brown;
+    border: solid;
     padding: 10px;
     border-radius: 5%;
 }
@@ -14,5 +14,4 @@
 
 .cardLines {
     text-decoration: none;
-    color: brown;
 }

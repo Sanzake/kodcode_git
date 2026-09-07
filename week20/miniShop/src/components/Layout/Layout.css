@@ -1,0 +1,13 @@
+.light {
+    background-color: wheat;
+    color: brown;
+}
+
+.dark {
+    background-color: #362E29;
+    color: #fdd0a3;
+}
+
+a {
+    color: inherit;
+}
