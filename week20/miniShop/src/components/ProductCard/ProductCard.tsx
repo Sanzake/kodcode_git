@@ -8,17 +8,18 @@ interface ProductCardProps {
 }
 
 export default function ProductCard({product}: ProductCardProps) {
-    const addFavorite = favoriteStore((s) => s.addFavorite)
-
+    const toggleFavorite = favoriteStore((s) => s.toggleFavorite)
+    const favorites = favoriteStore((s) => s.favorites)
+    const isFavorite = favorites.some((p) => p.id === product.id)
 
     return (
         <div className="card">
-            <Link to={`/products/${product.id}`}>
+            <Link className="cardLines" to={`/products/${product.id}`}>
                 <img src={product.image} alt="" className="poster"/>
                 <p>{product.title}</p>
                 <p>${product.price}</p>
             </Link>
-            <button type="button" onClick={() => addFavorite(product.id)}>add to favorite</button>
+            <button type="button" onClick={() => toggleFavorite(product)}>{isFavorite ? "❤️" : "♡"}</button>
         </div>
     )
 }

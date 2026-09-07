@@ -11,22 +11,23 @@ export default function ProductDetailPage() {
 		PRODUCT_URL + params.id,
 	); 
     const navigate = useNavigate()
-    const addFavorite = favoriteStore((s) => s.addFavorite)
-    
+    const toggleFavorite = favoriteStore((s) => s.toggleFavorite)
 
+    if (!currentProduct) return <div>Loading...</div>
+    
 	return (
 		<div>
 			<h1 className="title">Product details</h1>
 
 			<div className="detailedCard">
-				<img src={currentProduct?.image} alt="" />
+				<img src={currentProduct?.image} alt="" className="imgTag"/>
                 <div className="info">
-                    <p>{currentProduct?.title}</p>
+                    <p className="titleTag">{currentProduct?.title}</p>
                     <p>{currentProduct?.category}</p>
-                    <p>{currentProduct?.description}</p>
-                    <p>$ {currentProduct?.price}</p>
+                    <p className="priceTag">$ {currentProduct?.price}</p>
+                    <p className="descriptionTag">{currentProduct?.description}</p>
                     <div className="buttons">
-                        <button type="button" onClick={() => addFavorite(Number(params.id))}>Add to favorite</button>
+                        <button type="button" onClick={() => toggleFavorite(currentProduct)}>❤️</button>
                         <button type="button" onClick={() => navigate("/")}>Back to products</button>
                     </div>
                 </div>

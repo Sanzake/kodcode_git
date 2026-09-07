@@ -6,7 +6,7 @@ export default function Layout() {
 	return (
 		<div>
 			<Header />
-			<div style={{padding: 40}}>
+			<div style={{padding: 50}}>
 				<Outlet />
 			</div>
 			<Footer />

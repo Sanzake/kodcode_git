@@ -1,14 +1,36 @@
 .title {
     text-align: center;
     width: 100%;
+    color: brown;
 }
 
 .detailedCard {
     display: flex;
-    border: solid;
+    border: solid brown;
     border-radius: 20px;
+    color: brown;
+    align-items: center;
 }
 
 .info {
     flex-direction: column;
+    margin-left: 40px;
+}
+
+.priceTag {
+    font-size: 40px;
+}
+
+.titleTag {
+    font-size: 30px;
+}
+
+.descriptionTag {
+    font-size: 25px;
+}
+
+.imgTag {
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-bottom: 20px;
 }
