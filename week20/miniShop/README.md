@@ -9,8 +9,8 @@
 
 ### States
 #### Localstorage
-Used to save products from fetch.
-Once, on first page loading.
+Used to save products from fetch "/products".
+On every fetch.
 
 #### Zustand
 Used to save state for favorite products.
@@ -22,9 +22,3 @@ Used to save state of theme.
 ### Hooks
 #### useFetch
 Used to fetch any URL.
-
-#### useFetchProducts
-Used to fetch URL and get all products as array of objects.
-
-#### useFetchSingleProducts
-Used to fetch URL and get one product as object.
