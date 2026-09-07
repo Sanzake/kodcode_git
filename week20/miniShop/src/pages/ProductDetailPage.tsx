@@ -12,24 +12,25 @@ export default function ProductDetailPage() {
 	); 
     const navigate = useNavigate()
     const toggleFavorite = favoriteStore((s) => s.toggleFavorite)
-
+    const isFavorite = favoriteStore((s) => s.favorites.some((p) => p.id === Number(params.id)))
+    
     if (!currentProduct) return <div>Loading...</div>
+    
     
 	return (
 		<div>
 			<h1 className="title">Product details</h1>
 
 			<div className="detailedCard">
-				<img src={currentProduct?.image} alt="" className="imgTag"/>
+				<img src={currentProduct.image} alt="" className="imgTag"/>
                 <div className="info">
-                    <p className="titleTag">{currentProduct?.title}</p>
-                    <p>{currentProduct?.category}</p>
-                    <p className="priceTag">$ {currentProduct?.price}</p>
-                    <p className="descriptionTag">{currentProduct?.description}</p>
-                    <div className="buttons">
-                        <button type="button" onClick={() => toggleFavorite(currentProduct)}>❤️</button>
-                        <button type="button" onClick={() => navigate("/")}>Back to products</button>
-                    </div>
+                    <p className="titleTag">{currentProduct.title}</p>
+                    <p>🏷️ {currentProduct.category}</p>
+                    <p className="priceTag">$ {currentProduct.price}</p>
+                    <p className="descriptionTag">{currentProduct.description}</p>
+
+                    <button className="button-add-favorite" type="button" onClick={() => toggleFavorite(currentProduct)}>{isFavorite ? "❤️" : "🤍"}</button>
+                    <button className="button-back" type="button" onClick={() => navigate(-1)}>Back</button>
                 </div>
 			</div>
 		</div>
