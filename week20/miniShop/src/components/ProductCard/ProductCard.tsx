@@ -9,15 +9,14 @@ interface ProductCardProps {
 
 export default function ProductCard({product}: ProductCardProps) {
     const toggleFavorite = favoriteStore((s) => s.toggleFavorite)
-    const favorites = favoriteStore((s) => s.favorites)
-    const isFavorite = favorites.some((p) => p.id === product.id)
+    const isFavorite = favoriteStore((s) => s.favorites.some((p) => p.id === product.id))
 
     return (
         <div className="card">
-            <Link className="cardLines" to={`/products/${product.id}`}>
+            <Link className="card-lines" to={`/products/${product.id}`}>
                 <img src={product.image} alt="" className="poster"/>
-                <p>{product.title}</p>
-                <p>${product.price}</p>
+                <p className="product-title">{product.title}</p>
+                <p className="product-price">${product.price}</p>
             </Link>
             <button type="button" className="add-button" onClick={() => toggleFavorite(product)}>{isFavorite ? "❤️" : "🤍"}</button>
         </div>
