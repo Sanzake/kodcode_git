@@ -1,28 +1,35 @@
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import ProductCard from "../components/ProductCard/ProductCard";
 import SearchBar from "../components/SearchBar/SearchBar";
 import type { Product } from "../types/product";
 import "./HomePage.css";
-import useFetchProducts from "../hooks/useFetchProducts";
-
-const PRODUCTS_URL = "https://fakestoreapi.com/products/"
+import { PRODUCT_URL } from "../config";
+import useFetch from "../hooks/useFetch";
 
 export default function HomePage() {
-	const products: Product[] = useFetchProducts(PRODUCTS_URL);
-	localStorage.setItem("products", JSON.stringify(products))
-
+	const { data: products, error, loading } = useFetch<Product[]>(PRODUCT_URL);
 	const [searchWord, setSearchWord] = useState("");
 
-	const filteredProducts = products.filter((product: Product) => 
-		product.title.toLowerCase().includes(searchWord.toLowerCase())
-	)
-
-	console.log(products);
+	useEffect(() => {
+		if (products) {
+			localStorage.setItem("products", JSON.stringify(products));
+		}
+	}, [products]);
 	
+	const filteredProducts = useMemo(() => {
+		return (products ?? []).filter((product: Product) =>
+			product.title.toLowerCase().includes(searchWord.toLowerCase()),
+		);
+	}, [products, searchWord])
+	
+	if (error) return <>{error}</>;
+	if (loading) return <>Loading...</>;
+
+
 	return (
 		<div className="homePage">
-			<SearchBar setSearchWord={setSearchWord}/>
-			
+			<SearchBar setSearchWord={setSearchWord} />
+
 			{filteredProducts.map((p: Product) => (
 				<div key={p.id}>
 					<ProductCard product={p} />

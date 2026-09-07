@@ -1,9 +1,14 @@
 import { useEffect, useState } from "react";
 
 export default function useFetch<T>(url: string) {
-    const [data, setData] = useState<T>()
+    const [data, setData] = useState<T | null>(null)
+    const [error, setError] = useState<string | null>(null)
+    const [loading, setLoading] = useState<boolean>(true)
 
     useEffect(() => {
+        setError(null)
+        setLoading(true)
+
         fetch(url)
         .then(res => {
             if (!res.ok) {
@@ -15,8 +20,9 @@ export default function useFetch<T>(url: string) {
             setData(result)
         })
         .catch(error => {
-            console.error("Error!!!", error)
+            setError(error.message)
         })
+        .finally(() => setLoading(false))
      }, [url])   
-     return data
+     return {data, error, loading}
 }
