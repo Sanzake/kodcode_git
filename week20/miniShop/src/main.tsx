@@ -2,8 +2,12 @@ import { createRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router";
 import App from "./components/App/App.tsx";
 
-createRoot(document.getElementById("root")!).render(
-	<BrowserRouter>
-		<App />
-	</BrowserRouter>,
-);
+const rootElement = document.getElementById("root")
+
+if (rootElement) {
+	createRoot(rootElement).render(
+		<BrowserRouter>
+			<App />
+		</BrowserRouter>,
+	);
+}

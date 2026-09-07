@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { Outlet } from "react-router";
-import ThemeСontext from "../../context/themeContext";
+import ThemeСontext from "../../context/ThemeContext";
 import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
 import "./Layout.css"
