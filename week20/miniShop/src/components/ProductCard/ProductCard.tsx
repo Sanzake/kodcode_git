@@ -19,7 +19,7 @@ export default function ProductCard({product}: ProductCardProps) {
                 <p>{product.title}</p>
                 <p>${product.price}</p>
             </Link>
-            <button type="button" onClick={() => toggleFavorite(product)}>{isFavorite ? "❤️" : "♡"}</button>
+            <button type="button" className="add-button" onClick={() => toggleFavorite(product)}>{isFavorite ? "❤️" : "🤍"}</button>
         </div>
     )
 }
