@@ -2,9 +2,12 @@
 ## Learning REACT + CSS
 
 ### Dependencies
-```npm i react-router zustand```
+react
+react-router
+zustand
 
 ### Run
+```npm install```
 ```npm run dev```
 
 ### States
