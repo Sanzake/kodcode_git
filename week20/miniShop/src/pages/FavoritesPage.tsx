@@ -8,7 +8,6 @@ export default function FavoritesPage() {
 
     return (
         <div className="favoritesPage">
-            <h1 className="title">Favorites</h1>
             {products.map((p: Product) => (
                 <div key={p.id}>
                     <ProductCard product={p} />

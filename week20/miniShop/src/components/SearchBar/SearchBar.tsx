@@ -18,6 +18,8 @@ export default function SearchBar({setSearchWord}: SearchBarProps) {
 	}, [])
 
     return (
-        <input className="searchBar" ref={inputRef} type="text" placeholder="search" onChange={handleSearch}/>
+        <div className="searchBar" >
+            <input className="search" ref={inputRef} type="text" placeholder="search" onChange={handleSearch}/>
+        </div>
     )
 }

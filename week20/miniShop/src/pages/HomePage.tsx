@@ -21,8 +21,6 @@ export default function HomePage() {
 	
 	return (
 		<div className="homePage">
-			<h1 className="title">Products</h1>
-
 			<SearchBar setSearchWord={setSearchWord}/>
 			
 			{filteredProducts.map((p: Product) => (

@@ -19,8 +19,6 @@ export default function ProductDetailPage() {
     
 	return (
 		<div>
-			<h1 className="title">Product details</h1>
-
 			<div className="detailedCard">
 				<img src={currentProduct.image} alt="" className="imgTag"/>
                 <div className="info">
