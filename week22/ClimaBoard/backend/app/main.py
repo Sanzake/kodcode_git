@@ -11,5 +11,12 @@ app.include_router(health_router)
 app.include_router(search_city_router)
 
 
+# mg = MeteoGetter()
+# city = mg.search_city("paris")[0]
+# lon = city["longitude"]
+# lat = city["latitude"]
+# print(mg.get_current_weather(lat, lon))
+
+
 if __name__ == "__main__":
     uvicorn.run("main:app", reload=True)
