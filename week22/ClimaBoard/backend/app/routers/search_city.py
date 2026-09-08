@@ -9,4 +9,4 @@ mg = MeteoGetter()
 @router.post("")
 def search_city(city_name: str):
     cities = mg.search_city(city_name)
-    return {"message": cities}
+    return cities
