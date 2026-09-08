@@ -1,0 +1,12 @@
+from fastapi import APIRouter
+from services.meteo_getter import MeteoGetter
+
+router = APIRouter(prefix="/search-city")
+
+mg = MeteoGetter()
+
+
+@router.post("")
+def search_city(city_name):
+    cities = mg.search_city(city_name)
+    return {"message": cities}
