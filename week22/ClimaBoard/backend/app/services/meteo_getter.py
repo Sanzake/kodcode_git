@@ -62,10 +62,10 @@ class MeteoGetter:
         print(f"log[t.py] {params}")
 
         res = requests.get(fetchURL, params=params).json()
-        time = res["hourly"]["time"]
-        temperature_2m = res["hourly"]["temperature_2m"]
+        times = res["hourly"]["time"]
+        temperatures = res["hourly"]["temperature_2m"]
 
-        return (time, temperature_2m)
+        return (times, temperatures)
 
     def get_current_weather(self, longitude: float, latitude: float) -> int:
         """
