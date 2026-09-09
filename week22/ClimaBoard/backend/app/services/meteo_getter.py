@@ -27,19 +27,19 @@ class MeteoGetter:
         data = res.get("results", [])
 
         for i in range(len(data)):
-            getted_id = data[i]["id"]
-            getted_city_name = data[i]["name"]
-            getted_country_name = data[i]["country"]
-            getted_latitude = data[i]["latitude"]
-            getted_longitude = data[i]["longitude"]
+            getted_id: int = data[i]["id"]
+            getted_city_name: str = data[i]["name"]
+            getted_country_name: str = data[i]["country"]
+            getted_latitude: float = data[i]["latitude"]
+            getted_longitude: float = data[i]["longitude"]
 
             cities.append(
                 City(
-                    getted_id,
-                    getted_city_name,
-                    getted_country_name,
-                    getted_latitude,
-                    getted_longitude,
+                    id=getted_id,
+                    name=getted_city_name,
+                    country=getted_country_name,
+                    latitude=getted_latitude,
+                    longitude=getted_longitude,
                 )
             )
         return cities
@@ -74,13 +74,13 @@ class MeteoGetter:
         max_apparent = res_daily["apparent_temperature_max"]
 
         forecast_weather = ForecastWeather(
-            dates,
-            min_temperatures,
-            max_temperatures,
-            max_winds_speed,
-            weather_code,
-            min_apparent,
-            max_apparent,
+            dates=dates,
+            min_temperatures=min_temperatures,
+            max_temperatures=max_temperatures,
+            max_winds_speed=max_winds_speed,
+            weather_code=weather_code,
+            min_apparent=min_apparent,
+            max_apparent=max_apparent,
         )
 
         return forecast_weather
@@ -109,7 +109,10 @@ class MeteoGetter:
         apparent_temperature: str = res_current["apparent_temperature"]
 
         current_weather = CurrentWeather(
-            temperature, wind, weather_code, apparent_temperature
+            temperature=temperature,
+            wind=wind,
+            weather_code=weather_code,
+            apparent_temperature=apparent_temperature,
         )
 
         return current_weather

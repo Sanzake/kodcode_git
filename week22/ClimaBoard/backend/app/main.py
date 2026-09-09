@@ -9,10 +9,7 @@ from routers.search_city import router as search_city_router
 app = FastAPI()
 
 app.add_middleware(
-    CORSMiddleware,
-    allow_origins=ORIGINS,
-    allow_methods=["*"],
-    allow_headers=["*"]
+    CORSMiddleware, allow_origins=ORIGINS, allow_methods=["*"], allow_headers=["*"]
 )
 
 app.include_router(health_router)
