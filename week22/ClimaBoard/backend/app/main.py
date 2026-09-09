@@ -5,7 +5,6 @@ from fastapi.middleware.cors import CORSMiddleware
 from routers.city import router as city
 from routers.health import router as health_router
 from routers.search_city import router as search_city_router
-from services.meteo_getter import MeteoGetter
 
 app = FastAPI()
 
