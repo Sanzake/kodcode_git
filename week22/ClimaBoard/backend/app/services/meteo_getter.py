@@ -1,33 +1,6 @@
-from dataclasses import dataclass
-
 import requests
 from config.config import CITY_URL, FORECAST_URL
-
-
-@dataclass
-class CurrentWearher:
-    temperature: str
-    wind: str
-    weather_code: str
-    apparent_temperature: str
-
-@dataclass
-class City:
-    id: str
-    name: str
-    country: str
-    latitude: str
-    longitude: str
-
-@dataclass
-class ForecastWeather:
-    dates: str
-    min_temperatures: str
-    max_temperatures: str
-    max_winds_speed: str
-    weather_code: str
-    min_apparent: str
-    max_apparent: str
+from schemas.schemas import City, CurrentWeather, ForecastWeather
 
 
 class MeteoGetter:
@@ -60,10 +33,20 @@ class MeteoGetter:
             getted_latitude = data[i]["latitude"]
             getted_longitude = data[i]["longitude"]
 
-            cities.append(City(getted_id, getted_city_name, getted_country_name, getted_latitude, getted_longitude))
+            cities.append(
+                City(
+                    getted_id,
+                    getted_city_name,
+                    getted_country_name,
+                    getted_latitude,
+                    getted_longitude,
+                )
+            )
         return cities
 
-    def get_forecast_weather(self, latitude: float, longitude: float) -> ForecastWeather:
+    def get_forecast_weather(
+        self, latitude: float, longitude: float
+    ) -> ForecastWeather:
         """
         Get wether for a week starting from current day
         return tuple of 2 lists with time and temperature
@@ -90,11 +73,19 @@ class MeteoGetter:
         min_apparent = res_daily["apparent_temperature_min"]
         max_apparent = res_daily["apparent_temperature_max"]
 
-        forecast_weather = ForecastWeather(dates, min_temperatures, max_temperatures, max_winds_speed, weather_code, min_apparent, max_apparent)
+        forecast_weather = ForecastWeather(
+            dates,
+            min_temperatures,
+            max_temperatures,
+            max_winds_speed,
+            weather_code,
+            min_apparent,
+            max_apparent,
+        )
 
         return forecast_weather
 
-    def get_current_weather(self, longitude: float, latitude: float) -> CurrentWearher:
+    def get_current_weather(self, longitude: float, latitude: float) -> CurrentWeather:
         """
         Get current weather
 
@@ -117,6 +108,8 @@ class MeteoGetter:
         weather_code: str = res_current["weather_code"]
         apparent_temperature: str = res_current["apparent_temperature"]
 
-        current_weather = CurrentWearher(temperature, wind, weather_code, apparent_temperature)
+        current_weather = CurrentWeather(
+            temperature, wind, weather_code, apparent_temperature
+        )
 
         return current_weather
