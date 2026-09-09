@@ -7,8 +7,14 @@ from routers.city import router as city
 from routers.favorites import router as favorites
 from routers.health import router as health_router
 from routers.search_city import router as search_city_router
+from services.utils import create_favorites_json
 
-app = FastAPI()
+
+async def lifespan(app: FastAPI):
+    create_favorites_json()
+    yield
+
+app = FastAPI(lifespan=lifespan)
 
 app.add_middleware(
     CORSMiddleware, allow_origins=ORIGINS, allow_methods=["*"], allow_headers=["*"]
