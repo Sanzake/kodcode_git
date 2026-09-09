@@ -42,7 +42,7 @@ class MeteoGetter:
             )
         return cities
 
-    def get_weather(self, latitude: float, longitude: float) -> tuple:
+    def get_forecast_weather(self, latitude: float, longitude: float) -> tuple:
         """
         Get wether for a week starting from current day
         return tuple of 2 lists with time and temperature
@@ -55,18 +55,28 @@ class MeteoGetter:
         params = {
             "latitude": latitude,
             "longitude": longitude,
-            "hourly": "temperature_2m,wind_speed_10m",
+            "daily": "weather_code,wind_speed_10m_max,temperature_2m_min,temperature_2m_max,apparent_temperature_max,apparent_temperature_min",
         }
 
-        print(f"log[t.py] {fetchURL}")
-        print(f"log[t.py] {params}")
-
         res = requests.get(fetchURL, params=params).json()
-        times = res["hourly"]["time"]
-        temperatures = res["hourly"]["temperature_2m"]
-        winds = res["hourly"]["wind_speed_10m"]
 
-        return (times, temperatures, winds)
+        dates = res["daily"]["time"]
+        min_temperatures = res["daily"]["temperature_2m_min"]
+        max_temperatures = res["daily"]["temperature_2m_max"]
+        max_winds_speed = res["daily"]["wind_speed_10m_max"]
+        weather_code = res["daily"]["weather_code"]
+        min_apparent = res["daily"]["apparent_temperature_min"]
+        max_apparent = res["daily"]["apparent_temperature_max"]
+
+        return {
+            "dates": dates,
+            "min_temperatures": min_temperatures,
+            "max_temperatures": max_temperatures,
+            "max_winds_speed": max_winds_speed,
+            "weather_code": weather_code,
+            "min_apparent": min_apparent,
+            "max_apparent": max_apparent
+        }
 
     def get_current_weather(self, longitude: float, latitude: float) -> int:
         """
@@ -80,11 +90,14 @@ class MeteoGetter:
         params = {
             "latitude": latitude,
             "longitude": longitude,
-            "current": "temperature_2m,wind_speed_10m"
+            "current": "temperature_2m,wind_speed_10m,weather_code,apparent_temperature",
         }
 
         res = requests.get(fetchURL, params=params).json()
+
         temperature = res["current"]["temperature_2m"]
         wind = res["current"]["wind_speed_10m"]
+        weather_code = res["current"]["weather_code"]
+        apparent_temperature = res["current"]["apparent_temperature"]
 
-        return {"temperature": temperature, "wind": wind}
+        return {"temperature": temperature, "wind": wind, "weather_code": weather_code, "apparent_temperature": apparent_temperature}
