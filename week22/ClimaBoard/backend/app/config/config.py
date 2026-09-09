@@ -5,3 +5,11 @@ HOST = "127.0.0.1"
 PORT = 8000
 
 ORIGINS = ["http://localhost:5173"]
+
+EN_ALPHABET = "abcdefghijklmnopqrstuvwxyz"
+TARGET_EN = EN_ALPHABET[::-1]
+
+HE_ALPHABET = "אבגדהוזחטיכךלמםנןסעפףצץקרשת"
+TARGET_HE = HE_ALPHABET[::-1]
+
+SYMBOLS = " _-=+!@#$%^&*()"
