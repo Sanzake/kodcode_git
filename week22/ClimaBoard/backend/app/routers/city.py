@@ -6,7 +6,7 @@ router = APIRouter(prefix="/city")
 mg = MeteoGetter()
 
 
-@router.post("")
+@router.get("")
 def city(latitude: float, longitude: float):
     current_weather = mg.get_current_weather(latitude, longitude)
     

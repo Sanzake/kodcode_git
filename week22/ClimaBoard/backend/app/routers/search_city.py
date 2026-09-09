@@ -6,7 +6,7 @@ router = APIRouter(prefix="/search-city")
 mg = MeteoGetter()
 
 
-@router.post("")
+@router.get("")
 def search_city(city_name: str):
     cities = mg.search_city(city_name)
     return cities
