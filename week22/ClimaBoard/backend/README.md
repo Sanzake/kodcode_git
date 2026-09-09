@@ -1,2 +1,2 @@
-pip install requests
-pip install pydantic
+run
+from backend run main.py

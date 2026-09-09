@@ -33,3 +33,7 @@ class ForecastWeather(BaseModel):
     weather_code: list[int]
     min_apparent: list[float]
     max_apparent: list[float]
+
+class BodyFavoriteAdd(BaseModel):
+    username: str
+    city: City
