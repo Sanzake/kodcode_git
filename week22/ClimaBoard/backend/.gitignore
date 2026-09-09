@@ -1,3 +1,3 @@
 venv/
 __pycache__/
-app/data/favorites.json
+backend/app/data/favorites.json
