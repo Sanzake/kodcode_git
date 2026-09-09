@@ -8,7 +8,8 @@ mg = MeteoGetter()
 
 @router.post("")
 def city(latitude: float, longitude: float):
-    current_temperature = mg.get_current_weather(latitude, longitude)
+    current_weather = mg.get_current_weather(latitude, longitude)
+    
     times, temperatures, winds = mg.get_weather(latitude, longitude)
 
-    return {"current_temperature": current_temperature, "forecast": {"times": times, "temperature": temperatures, "winds": winds}}
+    return {"current_weather": current_weather, "forecast": {"times": times, "temperature": temperatures, "winds": winds}}
