@@ -16,9 +16,12 @@ app.include_router(city)
 
 # mg = MeteoGetter()
 # city = mg.search_city("paris")[0]
-# lon = city["longitude"]
 # lat = city["latitude"]
-# print(mg.get_current_weather(lat, lon))
+# lon = city["longitude"]
+# print(lat, lon)
+
+# # print(mg.get_forecast_weather(lat, lon))
+# print(f"log {mg.get_current_weather(lat, lon)}")
 
 
 if __name__ == "__main__":

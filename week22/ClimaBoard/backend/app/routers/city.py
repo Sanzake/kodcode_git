@@ -10,6 +10,6 @@ mg = MeteoGetter()
 def city(latitude: float, longitude: float):
     current_weather = mg.get_current_weather(latitude, longitude)
     
-    times, temperatures, winds = mg.get_weather(latitude, longitude)
+    forecast_weather = mg.get_forecast_weather(latitude, longitude)
 
-    return {"current_weather": current_weather, "forecast": {"times": times, "temperature": temperatures, "winds": winds}}
+    return {"current_weather": current_weather, "forecast": forecast_weather}

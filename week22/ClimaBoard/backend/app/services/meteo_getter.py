@@ -1,5 +1,33 @@
+from dataclasses import dataclass
+
 import requests
 from config.config import CITY_URL, FORECAST_URL
+
+
+@dataclass
+class CurrentWearher:
+    temperature: str
+    wind: str
+    weather_code: str
+    apparent_temperature: str
+
+@dataclass
+class City:
+    id: str
+    name: str
+    country: str
+    latitude: str
+    longitude: str
+
+@dataclass
+class ForecastWeather:
+    dates: str
+    min_temperatures: str
+    max_temperatures: str
+    max_winds_speed: str
+    weather_code: str
+    min_apparent: str
+    max_apparent: str
 
 
 class MeteoGetter:
@@ -7,7 +35,7 @@ class MeteoGetter:
         self.city_url = CITY_URL
         self.forecast_url = FORECAST_URL
 
-    def search_city(self, city_name: str) -> list:
+    def search_city(self, city_name: str) -> list[City]:
         """
         Get param city name and search in meteo matching cities
         return list of 5 most matching cities
@@ -31,18 +59,11 @@ class MeteoGetter:
             getted_country_name = data[i]["country"]
             getted_latitude = data[i]["latitude"]
             getted_longitude = data[i]["longitude"]
-            cities.append(
-                {
-                    "id": getted_id,
-                    "name": getted_city_name,
-                    "country": getted_country_name,
-                    "latitude": getted_latitude,
-                    "longitude": getted_longitude,
-                }
-            )
+
+            cities.append(City(getted_id, getted_city_name, getted_country_name, getted_latitude, getted_longitude))
         return cities
 
-    def get_forecast_weather(self, latitude: float, longitude: float) -> tuple:
+    def get_forecast_weather(self, latitude: float, longitude: float) -> ForecastWeather:
         """
         Get wether for a week starting from current day
         return tuple of 2 lists with time and temperature
@@ -59,26 +80,21 @@ class MeteoGetter:
         }
 
         res = requests.get(fetchURL, params=params).json()
+        res_daily = res["daily"]
 
-        dates = res["daily"]["time"]
-        min_temperatures = res["daily"]["temperature_2m_min"]
-        max_temperatures = res["daily"]["temperature_2m_max"]
-        max_winds_speed = res["daily"]["wind_speed_10m_max"]
-        weather_code = res["daily"]["weather_code"]
-        min_apparent = res["daily"]["apparent_temperature_min"]
-        max_apparent = res["daily"]["apparent_temperature_max"]
+        dates = res_daily["time"]
+        min_temperatures = res_daily["temperature_2m_min"]
+        max_temperatures = res_daily["temperature_2m_max"]
+        max_winds_speed = res_daily["wind_speed_10m_max"]
+        weather_code = res_daily["weather_code"]
+        min_apparent = res_daily["apparent_temperature_min"]
+        max_apparent = res_daily["apparent_temperature_max"]
 
-        return {
-            "dates": dates,
-            "min_temperatures": min_temperatures,
-            "max_temperatures": max_temperatures,
-            "max_winds_speed": max_winds_speed,
-            "weather_code": weather_code,
-            "min_apparent": min_apparent,
-            "max_apparent": max_apparent
-        }
+        forecast_weather = ForecastWeather(dates, min_temperatures, max_temperatures, max_winds_speed, weather_code, min_apparent, max_apparent)
 
-    def get_current_weather(self, longitude: float, latitude: float) -> int:
+        return forecast_weather
+
+    def get_current_weather(self, longitude: float, latitude: float) -> CurrentWearher:
         """
         Get current weather
 
@@ -94,10 +110,13 @@ class MeteoGetter:
         }
 
         res = requests.get(fetchURL, params=params).json()
+        res_current = res["current"]
 
-        temperature = res["current"]["temperature_2m"]
-        wind = res["current"]["wind_speed_10m"]
-        weather_code = res["current"]["weather_code"]
-        apparent_temperature = res["current"]["apparent_temperature"]
+        temperature: str = res_current["temperature_2m"]
+        wind: str = res_current["wind_speed_10m"]
+        weather_code: str = res_current["weather_code"]
+        apparent_temperature: str = res_current["apparent_temperature"]
 
-        return {"temperature": temperature, "wind": wind, "weather_code": weather_code, "apparent_temperature": apparent_temperature}
+        current_weather = CurrentWearher(temperature, wind, weather_code, apparent_temperature)
+
+        return current_weather
