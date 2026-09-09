@@ -16,8 +16,6 @@ app.add_middleware(
     allow_headers=["*"]
 )
 
-mg = MeteoGetter()
-
 app.include_router(health_router)
 app.include_router(search_city_router)
 app.include_router(city)
