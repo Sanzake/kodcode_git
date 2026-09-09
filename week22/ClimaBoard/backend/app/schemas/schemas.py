@@ -37,3 +37,8 @@ class ForecastWeather(BaseModel):
 class BodyFavoriteAdd(BaseModel):
     username: str
     city: City
+
+class BodyFavoriteRemove(BaseModel):
+    username: str
+    city_id: int
+    
