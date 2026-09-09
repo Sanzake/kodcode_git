@@ -59,7 +59,7 @@ class MeteoGetter:
         params = {
             "latitude": latitude,
             "longitude": longitude,
-            "daily": "weather_code,wind_speed_10m_max,temperature_2m_min,temperature_2m_max,apparent_temperature_max,apparent_temperature_min",
+            "daily": "weather_code,wind_speed_10m_max,temperature_2m_min,temperature_2m_max,apparent_temperature_max,apparent_temperature_min,sunrise,sunset",
         }
 
         res = requests.get(fetchURL, params=params).json()
@@ -72,6 +72,8 @@ class MeteoGetter:
         weather_code = res_daily["weather_code"]
         min_apparent = res_daily["apparent_temperature_min"]
         max_apparent = res_daily["apparent_temperature_max"]
+        sunrise = res_daily["sunrise"]
+        sunset = res_daily["sunset"]
 
         forecast_weather = ForecastWeather(
             dates=dates,
@@ -81,6 +83,8 @@ class MeteoGetter:
             weather_code=weather_code,
             min_apparent=min_apparent,
             max_apparent=max_apparent,
+            sunrise=sunrise,
+            sunset=sunset
         )
 
         return forecast_weather
@@ -97,7 +101,7 @@ class MeteoGetter:
         params = {
             "latitude": latitude,
             "longitude": longitude,
-            "current": "temperature_2m,wind_speed_10m,weather_code,apparent_temperature",
+            "current": "temperature_2m,wind_speed_10m,weather_code,apparent_temperature,wind_direction_10m,rain",
         }
 
         res = requests.get(fetchURL, params=params).json()
@@ -107,12 +111,16 @@ class MeteoGetter:
         wind: str = res_current["wind_speed_10m"]
         weather_code: str = res_current["weather_code"]
         apparent_temperature: str = res_current["apparent_temperature"]
+        wind_direction = res_current["wind_direction_10m"]
+        rain = res_current["rain"]
 
         current_weather = CurrentWeather(
             temperature=temperature,
             wind=wind,
             weather_code=weather_code,
             apparent_temperature=apparent_temperature,
+            wind_direction=wind_direction,
+            rain=rain
         )
 
         return current_weather

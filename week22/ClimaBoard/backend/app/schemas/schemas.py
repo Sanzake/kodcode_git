@@ -15,6 +15,8 @@ class CurrentWeather(BaseModel):
     wind: float
     weather_code: int
     apparent_temperature: float
+    wind_direction: int
+    rain: float
 
 
 class City(BaseModel):
@@ -33,6 +35,8 @@ class ForecastWeather(BaseModel):
     weather_code: list[int]
     min_apparent: list[float]
     max_apparent: list[float]
+    sunrise: list[str]
+    sunset: list[str]
 
 class BodyFavoriteAdd(BaseModel):
     username: str
