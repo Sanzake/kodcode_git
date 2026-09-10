@@ -16,6 +16,7 @@ export default function HomePage() {
     return (
         <div>
             <h1>Welcome, {username}!</h1>
+            <h2>This app allows you to check weather!</h2>
             <form onSubmit={sendUsername}>
                 <input type="text" placeholder="Your username..." ref={inputRef}/>
                 <button onClick={() => sendUsername}>send</button>
