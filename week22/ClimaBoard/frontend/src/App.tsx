@@ -11,6 +11,7 @@ function App() {
         <Route element={<Layout />}>
           <Route path={"/"} element={<HomePage />}></Route>
           <Route path={"/city"} element={<Protected><CityPage /></Protected>}></Route>
+          <Route path='*' element={<>404 - Not Found!</>} />
         </Route>
       </Routes>
     </div>
