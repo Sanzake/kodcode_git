@@ -15,6 +15,7 @@ def find_reverce_char(char: str):
 
 
 def atbashing(user_string: str) -> str:
+    user_string = user_string.lower()
     result = ""
     for char in user_string:
         result += find_reverce_char(char)
