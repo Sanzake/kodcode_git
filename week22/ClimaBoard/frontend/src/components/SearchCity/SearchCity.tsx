@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import useFetch from '../../hooks/useFetch'
 import type { City } from '../../types/City';
 import SearchingCityCard from './SearchingCityCard/SearchingCityCard';
+import { useCurrentCityStore } from '../../store/currentCityStore';
+
 
 export default function SearchCity() {
     const BASE_URL = "http://127.0.0.1:8000/"
@@ -9,7 +11,9 @@ export default function SearchCity() {
     const [inputValue, setInputValue] = useState("")
     const [url, setUrl] = useState(`${BASE_URL}search-city?city_name=Jerusalem`)
 
-    const handleURL = (e: React.FormEvent<HTMLFormElement>) => {
+    const setCurrentCity = useCurrentCityStore((s) => s.setCurrentCity)
+
+    const handleURL = (e: React.SubmitEvent<HTMLFormElement>) => {
         e.preventDefault()
         if (inputValue.length > 2) {
             setUrl(`${BASE_URL}search-city?city_name=${inputValue}`)
@@ -30,7 +34,7 @@ export default function SearchCity() {
             </form>
             <ul>
                 {data.map((c) => (
-                    <div key={c.id}>{<SearchingCityCard city={c}/>}</div>
+                    <div key={c.id} onClick={() => setCurrentCity(c)}>{<SearchingCityCard city={c}/>}</div>
                 ))}
             </ul>
         </div>

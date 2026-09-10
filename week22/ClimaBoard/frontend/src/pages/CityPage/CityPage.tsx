@@ -1,7 +1,12 @@
 import SearchCity from '../../components/SearchCity/SearchCity'
+import CityCard from '../../components/CityCard/CityCard'
 
 export default function CityPage() {
+  
   return (
-    <SearchCity />
+    <div>
+      <SearchCity />
+      <CityCard />
+    </div>
   )
 }
