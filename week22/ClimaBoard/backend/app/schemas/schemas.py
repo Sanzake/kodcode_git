@@ -39,10 +39,10 @@ class ForecastWeather(BaseModel):
     sunset: list[str]
 
 class BodyFavoriteAdd(BaseModel):
-    username: str
+    username: str = Field(..., min_length=3, max_length=25)
     city: City
 
 class BodyFavoriteRemove(BaseModel):
-    username: str
+    username: str = Field(..., min_length=3, max_length=25)
     city_id: int
     
