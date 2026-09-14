@@ -18,7 +18,7 @@ export default function useFetch<T>(url: string | null) {
         fetch(url)
         .then(res => {
             if (!res.ok) {
-                throw new Error(`Error!!! ${res.ok}`)
+                throw new Error(`Error!!! response.ok - ${res.ok}`)
             }
             return res.json()
         })

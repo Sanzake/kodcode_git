@@ -3,6 +3,7 @@ import { useState } from "react";
 import useFetch from "../../hooks/useFetch";
 import type { City } from "../../types/City";
 import SearchingCityCard from "./SearchingCityCard/SearchingCityCard";
+import "./SearchCity.css"
 
 interface SearchCityProps {
 	setCurrentCity: (city: City) => void;
@@ -29,17 +30,18 @@ export default function SearchCity({ setCurrentCity }: SearchCityProps) {
 
 	return (
 		<div>
-			<form onSubmit={handleURL}>
+			<form className="searchCityForm" onSubmit={handleURL}>
 				<input
+					className="searchCityInput"
 					type="text"
-					placeholder="search city"
+					placeholder="City name..."
 					onChange={(e) => setInputValue(e.target.value)}
 				/>
-				<button type="submit">search</button>
+				<button className="searchCityButton" type="submit">search</button>
 			</form>
-			<ul>
+			<ul className="results">
 				{data.map((c) => (
-					<button type="button" key={c.id} onClick={() => setCurrentCity(c)}>
+					<button className="searchResult" type="button" key={c.id} onClick={() => setCurrentCity(c)}>
 						{<SearchingCityCard city={c} />}
 					</button>
 				))}

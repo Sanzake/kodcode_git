@@ -1,0 +1,45 @@
+.searchCityForm {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.searchCityInput {
+    margin-top: 10px;
+    border: solid;
+    border-color: skyblue;
+    border-radius: 10px;
+    background-color: skyblue;
+
+    font-size: 20px;
+    padding: 3px;
+}
+
+.searchCityButton {
+    margin-top: 10px;
+    border: solid;
+    border-color: skyblue;
+    border-radius: 10px;
+    background-color: skyblue;
+
+    font-size: 20px;
+    padding: 3px;
+}
+
+.results {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin: 10px;
+}
+
+.searchResult {
+    margin-top: 10px;
+    border: solid;
+    border-color: skyblue;
+    border-radius: 10px;
+    background-color: skyblue;
+
+    font-size: 15px;
+    padding: 3px;
+}
