@@ -1,0 +1,30 @@
+.homePage {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.usernameForm {
+    margin-top: 40px;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+
+}
+
+.usernameInput {
+    border: solid;
+    border-color: skyblue;
+    border-radius: 10px;
+    font-size: 30px;
+    padding: 5px;
+    background-color: skyblue;
+}
+
+.usernameButton {
+    border: solid;
+    border-color: skyblue;
+    border-radius: 10px;
+    font-size: 30px;
+    padding: 5px;
+    background-color: skyblue;
+}
