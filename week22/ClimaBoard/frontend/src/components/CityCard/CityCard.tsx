@@ -1,9 +1,12 @@
 import useFetch from '../../hooks/useFetch';
-import { useCurrentCityStore } from '../../store/currentCityStore';
+import type { City } from '../../types/City';
 import type { Weather } from '../../types/weather';
 
-export default function CityCard() {
-    const currentCity = useCurrentCityStore((s) => s.currentCity)
+interface CityCardProps {
+    currentCity: City | null
+}
+
+export default function CityCard({currentCity}: CityCardProps) {
     const BASE_URL = "http://127.0.0.1:8000/"
     const url = `${BASE_URL}city?latitude=${currentCity?.latitude}&longitude=${currentCity?.longitude}`
     const {data, error, loading} = useFetch<Weather>(url)

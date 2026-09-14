@@ -1,6 +1,6 @@
 import type React from "react"
-import { useCurrentUserStore } from "../../store/currentUsername"
 import { useRef } from "react"
+import { useCurrentUserStore } from "../../store/currentUsername"
 
 export default function HomePage() {
     const username = useCurrentUserStore((s) => s.currentUser)
@@ -19,7 +19,7 @@ export default function HomePage() {
             <h2>This app allows you to check weather!</h2>
             <form onSubmit={sendUsername}>
                 <input type="text" placeholder="Your username..." ref={inputRef}/>
-                <button onClick={() => sendUsername}>send</button>
+                <button type="submit">send</button>
             </form>
         </div>
     )
