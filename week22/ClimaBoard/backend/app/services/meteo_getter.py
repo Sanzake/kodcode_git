@@ -71,7 +71,7 @@ class MeteoGetter:
 
         return forecast_weather
 
-    def get_current_weather(self, longitude: float, latitude: float) -> CurrentWeather:
+    def get_current_weather(self, latitude: float, longitude: float) -> CurrentWeather:
         """
         Get current weather
 
