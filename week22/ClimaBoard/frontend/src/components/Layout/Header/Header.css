@@ -1,0 +1,33 @@
+.navBar {
+    display: flex;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 1000; 
+    height: 70px;
+    padding: 0 2rem;
+    background-color: skyblue;
+    align-items: center;
+
+}
+
+.navTitle {
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: #2563eb;
+}
+
+.navLinks {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.link {
+    text-decoration: none;
+    border: solid;
+    border-radius: 10px;
+    padding: 5px;
+    color: #2563eb;
+
+}

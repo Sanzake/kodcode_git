@@ -1,23 +1,28 @@
 import { NavLink } from "react-router";
+import "./Header.css"
 
 export default function Header() {
     return (
-        <div>
-            <NavLink to={"/"}>
-                Clima Board
-            </NavLink>
-            <NavLink to={"/city"}>
-                Search city
-            </NavLink>
-            <NavLink to={"/favorites"}>
-                Favorites
-            </NavLink>
-            <NavLink to={"/compare"}>
-                Compare cities
-            </NavLink>
-            <NavLink to={"/atbash"}>
-                Atbash
-            </NavLink>
+        <div className="navBar">
+                <div>
+                    <NavLink className="navTitle" to={"/"}>
+                        Clima Board
+                    </NavLink>
+                </div>
+                <div className="navLinks">
+                    <NavLink className="link" to={"/city"}>
+                        Search city
+                    </NavLink>
+                    <NavLink className="link" to={"/favorites"}>
+                        Favorites
+                    </NavLink>
+                    <NavLink className="link" to={"/compare"}>
+                        Compare cities
+                    </NavLink>
+                    <NavLink className="link" to={"/atbash"}>
+                        Atbash
+                    </NavLink>
+                </div>
         </div>
     )
 }
