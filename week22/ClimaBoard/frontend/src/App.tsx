@@ -4,6 +4,7 @@ import CityPage from './pages/CityPage/CityPage'
 import Layout from './components/Layout/Layout'
 import Protected from './components/Protected/Protected'
 import ComparePage from './pages/ComparePage/ComparePage'
+import FavoritesPage from './pages/FavoritesPage/FavoritesPage'
 
 function App() {
   return (
@@ -13,6 +14,8 @@ function App() {
           <Route path={"/"} element={<HomePage />}></Route>
           <Route path={"/city"} element={<Protected><CityPage /></Protected>}></Route>
           <Route path='/compare' element={<Protected><ComparePage /></Protected>}></Route>
+          <Route path='/favorites' element={<Protected><FavoritesPage /></Protected>}></Route>
+
           <Route path='*' element={<>404 - Not Found!</>} />
         </Route>
       </Routes>

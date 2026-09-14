@@ -1,3 +1,4 @@
+import { useAddToFavorite } from '../../hooks/useAddToFavorite';
 import useFetch from '../../hooks/useFetch';
 import type { City } from '../../types/City';
 import type { Weather } from '../../types/weather';
@@ -42,6 +43,8 @@ export default function CityCard({currentCity}: CityCardProps) {
     const BASE_URL = "http://127.0.0.1:8000/"
     const url = `${BASE_URL}city?latitude=${currentCity?.latitude}&longitude=${currentCity?.longitude}`
     const {data, error, loading} = useFetch<Weather>(url)
+
+    const { addToFavorites } = useAddToFavorite();
     
     if (!currentCity) {
         return <h3>Select a city!</h3>
@@ -69,11 +72,16 @@ export default function CityCard({currentCity}: CityCardProps) {
     const sunrise = forecast.sunrise
     const sunset = forecast.sunset
 
+    const handleAddToFavorite = async () => {
+        await addToFavorites(currentCity)
+    }
+
     return (
         <div className='cityCard'>
             <div className='cityTitle'>
                 {currentCity?.name} - {currentCity?.country}
             </div>
+            <button type='button' onClick={handleAddToFavorite}>Add to favorite</button>
             <div className='currentCard'>
                 <h3>Current</h3>
                 <div>
