@@ -22,4 +22,4 @@ TARGET_HE = HE_ALPHABET[::-1]
 SYMBOLS = " _-=+?/|!@#$%^&*().,"
 
 
-FAVORITES_JSON = Path("app/data/favorites.json")
+FAVORITES_JSON = Path("data/favorites.json")

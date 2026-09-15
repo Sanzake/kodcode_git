@@ -1,8 +1,7 @@
-import React from 'react'
-import useFetch from '../../hooks/useFetch';
-import type { City } from '../../types/City';
 import CityCard from '../../components/CityCard/CityCard';
+import useFetch from '../../hooks/useFetch';
 import { useCurrentUserStore } from '../../store/currentUsername';
+import type { City } from '../../types/City';
 
 export default function FavoritesPage() {
     const BASE_URL = "http://127.0.0.1:8000/";
