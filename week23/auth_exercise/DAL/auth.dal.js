@@ -1,6 +1,6 @@
 import { ObjectId } from "mongodb";
 import { db } from "../db/db.js";
-import { createUserRecord } from "../models/user.model.js";
+import { createUserRecord } from "../models/auth.model.js";
 
 const users = db.collection("users");
 

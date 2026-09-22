@@ -1,4 +1,5 @@
-import { createUserDAL, findUserByEmailDAL } from "../DAL/auth.DAL";
+import { createUserDAL, findUserByEmailDAL } from "../DAL/auth.DAL.js";
+import { hashPassword } from "../utils/password.js";
 
 export const registerController = async (req, res) => {
     const {email, name, password} = req.body
