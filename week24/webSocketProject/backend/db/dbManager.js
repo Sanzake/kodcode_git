@@ -7,8 +7,8 @@ export const createUserDAL = async (userData) => {
 	return { ...userData };
 };
 
-export const findUserByEmailDAL = async (email) => {
-    const normalizedEmail = email.toLowerCase();
-    const currentUser = await users.findOne({ email: normalizedEmail });
+export const findUserByUsernameDAL = async (username) => {
+    const normalizedUsername = username.toLowerCase();
+    const currentUser = await users.findOne({ username: normalizedUsername });
     return currentUser;
 };

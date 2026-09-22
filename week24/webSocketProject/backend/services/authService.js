@@ -1,9 +1,9 @@
-import { createUserDAL, findUserByEmailDAL } from "../db/dbManager.js";
+import { createUserDAL, findUserByUsernameDAL } from "../db/dbManager.js";
 import { comparePassword, hashPassword } from "../utils/hash.js";
 import { generateToken } from "../utils/token.js";
 
 export const registerService = async (userData) => {
-	const existUser = await findUserByEmailDAL(userData.email);
+	const existUser = await findUserByUsernameDAL(userData.username);
 	if (existUser) {
 		throw new Error("Error! user already exist!");
 	}
@@ -14,7 +14,7 @@ export const registerService = async (userData) => {
 };
 
 export const loginService = async (userData) => {
-	const existUser = await findUserByEmailDAL(userData.email);
+	const existUser = await findUserByUsernameDAL(userData.username);
 	if (!existUser) {
 		throw new Error("Error! User doesnt exist exist!");
 	}
